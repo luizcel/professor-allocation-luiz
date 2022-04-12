@@ -1,7 +1,7 @@
 package com.project.professorallocation.model;
 
-import java.sql.Date;
 import java.time.DayOfWeek;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "allocation")
 public class Allocation {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -26,17 +27,18 @@ public class Allocation {
 	private DayOfWeek dayOfWeek;
 	
 	@Temporal(TemporalType.TIME)
-	@Column(nullable = false)
+	@Column(nullable = false, name = "start")
 	private Date startHour;
 	
 	@Temporal(TemporalType.TIME)
-	@Column(nullable = false)
-	private Date endtHour;
+	@Column(nullable = false, name = "end")
+	private Date endHour;
 	
-	
+	 @Column(name = "professor_id", nullable = false)
 	private Long professorId;
 	
-	private Long courseId;
+	 @Column(name = "course_id", nullable = false)
+	 private Long courseId;
 
 	public Allocation() {
 		super();
@@ -66,12 +68,12 @@ public class Allocation {
 		this.startHour = startHour;
 	}
 
-	public Date getEndtHour() {
-		return endtHour;
+	public Date getEndHour() {
+		return endHour;
 	}
 
-	public void setEndtHour(Date endtHour) {
-		this.endtHour = endtHour;
+	public void setEndHour(Date endHour) {
+		this.endHour = endHour;
 	}
 
 	public Long getProfessorId() {
@@ -92,9 +94,11 @@ public class Allocation {
 
 	@Override
 	public String toString() {
-		return "Allocation [id=" + id + ", professorId=" + professorId + ", courseId=" + courseId + "]";
+		return "Allocation [id=" + id + ", dayOfWeek=" + dayOfWeek + ", startHour=" + startHour + ", endHour=" + endHour
+				+ ", professorId=" + professorId + ", courseId=" + courseId + "]";
 	}
-	
+
+	 
 	
 
 }
