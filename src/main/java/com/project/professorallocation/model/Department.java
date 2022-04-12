@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "department")
 
-public class Departament {
+public class Department {
 	@Id
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +19,7 @@ public class Departament {
 	private String name;
 	
 
-	public Departament() {
+	public Department() {
 		super();
 	}
 

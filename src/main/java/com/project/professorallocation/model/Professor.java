@@ -29,7 +29,7 @@ public class Professor {
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name="departament_id", nullable = false, updatable = false, insertable = false)
-	private Departament departament;
+	private Department departament;
 	
 	
 	
