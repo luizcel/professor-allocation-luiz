@@ -17,28 +17,28 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "allocation")
 public class Allocation {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, name = "day")
 	private DayOfWeek dayOfWeek;
-	
+
 	@Temporal(TemporalType.TIME)
 	@Column(nullable = false, name = "start")
 	private Date startHour;
-	
+
 	@Temporal(TemporalType.TIME)
 	@Column(nullable = false, name = "end")
 	private Date endHour;
-	
-	 @Column(name = "professor_id", nullable = false)
+
+	@Column(name = "professor_id", nullable = false)
 	private Long professorId;
-	
-	 @Column(name = "course_id", nullable = false)
-	 private Long courseId;
+
+	@Column(name = "course_id", nullable = false)
+	private Long courseId;
 
 	public Allocation() {
 		super();
@@ -97,8 +97,5 @@ public class Allocation {
 		return "Allocation [id=" + id + ", dayOfWeek=" + dayOfWeek + ", startHour=" + startHour + ", endHour=" + endHour
 				+ ", professorId=" + professorId + ", courseId=" + courseId + "]";
 	}
-
-	 
-	
 
 }
