@@ -15,24 +15,22 @@ public class Professor {
 	@Id
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+
 	private Long id;
-	
+
 	@Column(name = "name", length = 100, nullable = false)
 	private String name;
-	
+
 	@Column(length = 11, nullable = false, unique = true)
 	private String cpf;
-	
-	@Column(name= "departament_id", nullable = false)
+
+	@Column(name = "departament_id", nullable = false)
 	private Long departamentId;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name="departament_id", nullable = false, updatable = false, insertable = false)
+	@JoinColumn(name = "departament_id", nullable = false, updatable = false, insertable = false)
 	private Department departament;
-	
-	
-	
+
 	public Professor() {
 		super();
 	}
@@ -81,7 +79,5 @@ public class Professor {
 	public void setDepartamentId(Long departamentId) {
 		this.departamentId = departamentId;
 	}
-
-	
 
 }
