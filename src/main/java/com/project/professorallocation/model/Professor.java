@@ -24,28 +24,28 @@ public class Professor {
 	@Column(length = 11, nullable = false, unique = true)
 	private String cpf;
 
-	@Column(name = "departament_id", nullable = false)
-	private Long departamentId;
+	@Column(name = "department_id", nullable = false)
+	private Long departmentId;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "departament_id", nullable = false, updatable = false, insertable = false)
-	private Department departament;
+	@JoinColumn(name = "department_id", nullable = false, updatable = false, insertable = false)
+	private Department department;
 
 	public Professor() {
 		super();
 	}
 
-	public Professor(Long id, String name, String cpf, Long departamentId) {
+	public Professor(Long id, String name, String cpf, Long departmentId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
-		this.departamentId = departamentId;
+		this.departmentId = departmentId;
 	}
 
 	@Override
 	public String toString() {
-		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + ", departamentId=" + departamentId + "]";
+		return "Professor [id=" + id + ", name=" + name + ", cpf=" + cpf + ", departmentId=" + departmentId + "]";
 	}
 
 	public Long getId() {
@@ -72,12 +72,12 @@ public class Professor {
 		this.cpf = cpf;
 	}
 
-	public Long getDepartamentId() {
-		return departamentId;
+	public Long getDepartmentId() {
+		return departmentId;
 	}
 
-	public void setDepartamentId(Long departamentId) {
-		this.departamentId = departamentId;
+	public void setDepartmentId(Long departmentId) {
+		this.departmentId = departmentId;
 	}
 
 }
