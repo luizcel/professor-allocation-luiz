@@ -10,4 +10,7 @@ import com.project.professorallocation.model.Department;
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
 
+	List<Department> findByNameLike(String string);
+
+
 }
