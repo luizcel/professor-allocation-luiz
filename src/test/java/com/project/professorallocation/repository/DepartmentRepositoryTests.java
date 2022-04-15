@@ -19,14 +19,60 @@ import com.project.professorallocation.model.Department;
 public class DepartmentRepositoryTests {
 
     @Autowired
-    DepartmentRepository departmentRepository;
+    private DepartmentRepository repository;
     
     @Test
     public void findAll() {
-        // Act
-        List<Department> department = departmentRepository.findAll();
+     
+        List<Department> items = repository.findAll();
+        
+        System.out.println("Quantidade de elementos retornados:" + items.size());
 
-        // Print
-        department.forEach(System.out::println);
+        for(Department item : items) {
+        	System.out.println(item);
+        }
+    }
+    
+    @Test
+    public void create() {
+    	Department departmentBeingCreated = new Department();
+    	departmentBeingCreated.setName("Departmento de enfermagem");
+    	
+    	departmentBeingCreated = repository.save(departmentBeingCreated);
+    	System.out.println(departmentBeingCreated);
+    }
+    
+    @Test
+    public void findSpecificDepartment() {
+    	Department dept = repository.findById(2L).orElse(null);
+    	System.out.println(dept);
+    }
+    
+    @Test
+    public void findDepartmentByPartOfTheName() {
+    	List<Department> depts = repository.findByNameLike("%gem%");
+    	
+    	System.out.println("elementos retornados:"+ depts.size());
+    	depts.forEach(System.out::println);
+    }
+    
+    @Test
+    public void update() {
+    Department departmentBeingCreated = new Department();
+    departmentBeingCreated.setId(1L);
+    departmentBeingCreated.setName("Departamento de Informática");
+    
+    departmentBeingCreated = repository.save(departmentBeingCreated);
+    System.out.println(departmentBeingCreated);
+    }
+    
+    @Test
+    public void delete() {
+    	repository.deleteById(5L);
+    }
+    
+    @Test
+    public void deleteAllItems() {
+    	repository.deleteAllInBatch();
     }
 }
