@@ -36,6 +36,12 @@ public class AllocationRepositoryTests {
 	}
 	
 	@Test
+	    public void findSpecificAllocation() {
+	    	Allocation allocation = repository.findById(2L).orElse(null);
+	    	System.out.println(allocation);
+	    }
+	
+	@Test
 	public void create() throws ParseException{
 		Allocation allocation = new Allocation();
 		allocation.setDayOfWeek(DayOfWeek.TUESDAY);
@@ -48,4 +54,30 @@ public class AllocationRepositoryTests {
 		
 		System.out.println(allocation);
 	}
+	
+    @Test
+    public void update() throws ParseException {
+    	Allocation allocationBeingUpdated = new Allocation();
+    	allocationBeingUpdated.setId(5L);
+    	allocationBeingUpdated.setDayOfWeek(DayOfWeek.SATURDAY);
+    	allocationBeingUpdated.setStartHour(sdf.parse("19:00-0300"));
+    	allocationBeingUpdated.setEndHour(sdf.parse("21:00-0300"));
+    	allocationBeingUpdated.setProfessorId(1L);
+    	allocationBeingUpdated.setCourseId(1L);
+    
+    	allocationBeingUpdated = repository.save(allocationBeingUpdated);
+    	
+    	System.out.println(allocationBeingUpdated);
+    }
+    
+    @Test
+    public void delete() {
+    	repository.deleteById(5L);
+    }
+    
+    @Test
+    public void deleteAllItems() {
+    	repository.deleteAllInBatch();
+    }
 }
+
