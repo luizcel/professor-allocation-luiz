@@ -11,7 +11,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 
 import com.project.professorallocation.model.Course;
-import com.project.professorallocation.model.Department;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
@@ -31,6 +30,13 @@ public class CourseRepositoryTests {
 			System.out.println(item);
 		}
 	}
+	
+	@Test
+    public void findSpecificCourse() {
+    	Course course = repository.findById(2L).orElse(null);
+    	System.out.println(course);
+    }
+	
 	 @Test
 	    public void create() {
 	    	Course courseBeingCreated = new Course();
@@ -38,6 +44,26 @@ public class CourseRepositoryTests {
 	    	
 	    	courseBeingCreated = repository.save(courseBeingCreated);
 	    	System.out.println(courseBeingCreated);
+	    }
+	 @Test
+	    public void update() {
+		 Course courseBeingUpdated = new Course();
+	    	courseBeingUpdated.setId(1L);
+	    	courseBeingUpdated.setName("Banco de dadinhos");
+	    
+	    	courseBeingUpdated = repository.save(courseBeingUpdated);
+	    	
+	    	System.out.println(courseBeingUpdated);
+	    }
+	    
+	    @Test
+	    public void delete() {
+	    	repository.deleteById(1L);
+	    }
+	    
+	    @Test
+	    public void deleteAllItems() {
+	    	repository.deleteAllInBatch();
 	    }
 }
 
