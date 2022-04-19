@@ -48,4 +48,16 @@ public class ProfessorRepositoryTests {
     	System.out.println(professorBeingCreated);
     }
 	
+	@Test
+    public void update() {
+		Professor professorBeingUpdated = new Professor();
+		professorBeingUpdated.setId(1L);
+    	professorBeingUpdated.setName("Amirton");
+    	professorBeingUpdated.setCpf("00815890427");
+    	professorBeingUpdated.setDepartmentId(6L);
+    	
+    	professorBeingUpdated = repository.save(professorBeingUpdated);
+    	System.out.println(professorBeingUpdated);
+    }
+	
 }
