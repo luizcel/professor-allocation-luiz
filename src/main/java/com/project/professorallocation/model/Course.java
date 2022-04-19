@@ -16,7 +16,7 @@ public class Course {
 	private Long id;
 	
 	@Column(unique = true, nullable = false)
-	private String nome;
+	private String name;
 	public Long getId() {
 		return id;
 	}
@@ -28,15 +28,15 @@ public class Course {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", nome=" + nome + "]";
+		return "Course [id=" + id + ", nome=" + name + "]";
 	}
 
 	
