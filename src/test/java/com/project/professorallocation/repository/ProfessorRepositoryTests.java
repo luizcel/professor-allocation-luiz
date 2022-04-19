@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 
+import com.project.professorallocation.model.Course;
 import com.project.professorallocation.model.Professor;
 
 @DataJpaTest
@@ -30,5 +31,15 @@ public class ProfessorRepositoryTests {
 			System.out.println(item);
 		}
 	}
+	@Test
+    public void create() {
+		Professor professorBeingCreated = new Professor();
+    	professorBeingCreated.setName("Amirton");
+    	professorBeingCreated.setCpf("00815890427");
+    	professorBeingCreated.setDepartmentId(6L);
+    	
+    	professorBeingCreated = repository.save(professorBeingCreated);
+    	System.out.println(professorBeingCreated);
+    }
 	
 }
