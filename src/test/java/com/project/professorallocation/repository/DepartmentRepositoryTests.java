@@ -58,12 +58,12 @@ public class DepartmentRepositoryTests {
     
     @Test
     public void update() {
-    Department departmentBeingCreated = new Department();
-    departmentBeingCreated.setId(1L);
-    departmentBeingCreated.setName("Departamento de Informática");
+    Department departmentBeingUpdated = new Department();
+    departmentBeingUpdated.setId(1L);
+    departmentBeingUpdated.setName("Departamento de Informática");
     
-    departmentBeingCreated = repository.save(departmentBeingCreated);
-    System.out.println(departmentBeingCreated);
+    departmentBeingUpdated = repository.save(departmentBeingUpdated);
+    System.out.println(departmentBeingUpdated);
     }
     
     @Test
