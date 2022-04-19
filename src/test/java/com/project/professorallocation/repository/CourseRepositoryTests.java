@@ -11,6 +11,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
 
 import com.project.professorallocation.model.Course;
+import com.project.professorallocation.model.Department;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
@@ -30,4 +31,13 @@ public class CourseRepositoryTests {
 			System.out.println(item);
 		}
 	}
+	 @Test
+	    public void create() {
+	    	Course courseBeingCreated = new Course();
+	    	courseBeingCreated.setName("Banco de dados");
+	    	
+	    	courseBeingCreated = repository.save(courseBeingCreated);
+	    	System.out.println(courseBeingCreated);
+	    }
 }
+
