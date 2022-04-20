@@ -23,10 +23,10 @@ public class DepartmentService {
 	
 	public Department update(Department department) {
 		Long id = department.getId();
-		if(id == null ||!repository.existsById(id)) {
-			return null;
-		}else {
+		if(id != null && repository.existsById(id)) {
 			return saveInternal(department);
+		}else {
+			return null;
 		}
 	}
 	
