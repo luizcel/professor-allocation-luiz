@@ -23,10 +23,10 @@ public class CourseService {
 
 	public Course update(Course course) {
 		Long id = course.getId();
-		if (id == null || !repository.existsById(id)) {
-			return null;
-		} else {
+		if (id != null && repository.existsById(id)) {
 			return saveInternal(course);
+		} else {
+			return null;
 		}
 	}
 	
