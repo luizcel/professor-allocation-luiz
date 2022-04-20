@@ -23,10 +23,10 @@ public class ProfessorService {
 
 	public Professor update(Professor professor) {
 		Long id = professor.getId();
-		if (id == null || !repository.existsById(id)) {
-			return null;
-		} else {
+		if (id != null && repository.existsById(id)) {
 			return saveInternal(professor);
+		} else {
+			return null;
 		}
 	}
 	
