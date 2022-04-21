@@ -40,6 +40,10 @@ public class Allocation {
 	@Column(name = "course_id", nullable = false)
 	private Long courseId;
 
+	private Course course;
+
+	private Professor professor;
+
 	public Allocation() {
 		super();
 	}
@@ -91,11 +95,28 @@ public class Allocation {
 	public void setCourseId(Long courseId) {
 		this.courseId = courseId;
 	}
+	
+	public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
 	@Override
 	public String toString() {
 		return "Allocation [id=" + id + ", dayOfWeek=" + dayOfWeek + ", startHour=" + startHour + ", endHour=" + endHour
-				+ ", professorId=" + professorId + ", courseId=" + courseId + "]";
+				+ ", professorId=" + professorId + ", courseId=" + courseId + ", course=" + course + ", professor="
+				+ professor + "]";
 	}
 
 }
