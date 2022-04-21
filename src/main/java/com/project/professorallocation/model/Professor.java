@@ -84,11 +84,19 @@ public class Professor {
 		this.departmentId = departmentId;
 	}
 	
-    public List<Allocation> getAllocations() {
-        return getAllocations();
+	public Department getDepartment() {
+        return department;
     }
 
-    public void setAllocations(List<Allocation> allocations) {
-        this.allocations = allocations;
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+	
+    public List<Allocation> getAllocations() {
+        return allocations();
+    }
+
+	public void setAllocations(List<Allocation> allocations) {
+    	this.allocations = allocations;
     }
 }
