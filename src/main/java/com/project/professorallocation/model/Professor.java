@@ -1,5 +1,7 @@
 package com.project.professorallocation.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,6 +32,8 @@ public class Professor {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "department_id", nullable = false, updatable = false, insertable = false)
 	private Department department;
+
+	private List<Allocation> allocations;
 
 	public Professor() {
 		super();
@@ -79,5 +83,12 @@ public class Professor {
 	public void setDepartmentId(Long departmentId) {
 		this.departmentId = departmentId;
 	}
+	
+    public List<Allocation> getAllocations() {
+        return getAllocations();
+    }
 
+    public void setAllocations(List<Allocation> allocations) {
+        this.allocations = allocations;
+    }
 }
