@@ -1,5 +1,7 @@
 package com.project.professorallocation.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +18,9 @@ public class Course {
 	
 	@Column(unique = true, nullable = false)
 	private String name;
+
+	private List<Allocation> allocations;
+	
 	public Long getId() {
 		return id;
 	}
@@ -38,6 +43,13 @@ public class Course {
 		return "Course [id=" + id + ", nome=" + name + "]";
 	}
 
+	 public List<Allocation> getAllocations() {
+	        return allocations;
+	    }
+
+	    public void setAllocations(List<Allocation> allocations) {
+	        this.allocations = allocations;
+	    }
 	
 	
 }
