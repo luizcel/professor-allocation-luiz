@@ -58,7 +58,7 @@ public class AllocationRepositoryTests {
     @Test
     public void update() throws ParseException {
     	Allocation allocationBeingUpdated = new Allocation();
-    	allocationBeingUpdated.setId(5L);
+    	allocationBeingUpdated.setId(33L);
     	allocationBeingUpdated.setDayOfWeek(DayOfWeek.SATURDAY);
     	allocationBeingUpdated.setStartHour(sdf.parse("19:00-0300"));
     	allocationBeingUpdated.setEndHour(sdf.parse("21:00-0300"));

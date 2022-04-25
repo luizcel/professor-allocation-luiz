@@ -29,11 +29,18 @@ public class AllocationService {
 	public List<Allocation> findAll() {
 		return repository.findAll();
 	}
+	
+	public List<Allocation> findByProfessor(Long id) {
+		return null;
+	}
 
 	public void deleteById(Long id) {
 		if (repository.existsById(id)) {
 			repository.deleteById(id);
 		}
+	}
+	
+	public void deleteAllInBatch() { 
 	}
 
 	public Allocation create(Allocation allocation) {
@@ -51,7 +58,7 @@ public class AllocationService {
 		}
 	}
 
-	private Allocation saveInternal(Allocation allocation) {
+	Allocation saveInternal(Allocation allocation) {
 		if(!isEndHourGreaterThanStartHour(allocation) || hasCollision(allocation)) {
 			throw new RuntimeException("There is a time collision for this allocation");
 		} else {
