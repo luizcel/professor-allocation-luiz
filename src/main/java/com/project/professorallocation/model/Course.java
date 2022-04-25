@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "course")
@@ -19,6 +20,7 @@ public class Course {
 	@Column(unique = true, nullable = false)
 	private String name;
 
+	@Transient
 	private List<Allocation> allocations;
 	
 	public Long getId() {

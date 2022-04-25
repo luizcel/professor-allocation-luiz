@@ -79,7 +79,7 @@ public class AllocationService {
 		List<Allocation> currentAllocations = repository.findByProfessorId(newAllocation.getProfessorId());
 
 		for (Allocation item : currentAllocations) {
-			if (hasCollision(item, new Allocation())) {
+			if (hasCollision(item, newAllocation)) {
 				hasCollision = true;
 				break;
 			}
@@ -90,7 +90,7 @@ public class AllocationService {
 	private boolean hasCollision(Allocation currentAllocation, Allocation newAllocation) {
 		return !currentAllocation.getId().equals(newAllocation.getId())
 				&& currentAllocation.getProfessorId().equals(newAllocation.getProfessorId())
-				&& currentAllocation.getDayOfWeek() == newAllocation.getDayOfWeek()
+				&& currentAllocation.getDayOfWeek().equals(newAllocation.getDayOfWeek())
 				&& currentAllocation.getStartHour().compareTo(newAllocation.getEndHour()) < 0
 				&& newAllocation.getStartHour().compareTo(currentAllocation.getEndHour()) < 0;
 	}

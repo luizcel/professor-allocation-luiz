@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "professor")
@@ -33,6 +34,7 @@ public class Professor {
 	@JoinColumn(name = "department_id", nullable = false, updatable = false, insertable = false)
 	private Department department;
 
+	@Transient
 	private List<Allocation> allocations;
 
 	public Professor() {
@@ -91,12 +93,14 @@ public class Professor {
     public void setDepartment(Department department) {
         this.department = department;
     }
-	
-    public List<Allocation> getAllocations() {
-        return allocations();
-    }
+
+	public List<Allocation> getAllocations() {
+		return allocations;
+	}
 
 	public void setAllocations(List<Allocation> allocations) {
-    	this.allocations = allocations;
-    }
+		this.allocations = allocations;
+	}
+	
+    
 }
