@@ -48,4 +48,12 @@ public class DepartmentService {
 		Department createdDepartment = repository.save(department);
 		return createdDepartment;
 	}
+
+	public List<Department> findAll(Object object) {
+		return repository.findAll();
+	}
+
+	public void deleteAll() {
+		repository.deleteAllInBatch();
+	}
 }

@@ -48,4 +48,13 @@ public class CourseService {
 		Course createdCourse = repository.save(course);
 		return createdCourse;
 	}
+
+	public void deleteAll() {	
+		repository.deleteAllInBatch();
+	}
+
+	public List<Course> findAll(String name) {
+		return repository.findAll();
+	}
+
 }

@@ -48,5 +48,17 @@ public class ProfessorService {
 		Professor createdProfessor = repository.save(professor);
 		return createdProfessor;
 	}
+
+	public List<Professor> findAll(String name) {
+		return repository.findAll();
+	}
+
+	public List<Professor> findByDepartment(Long departmentId) {
+		return repository.findAll();
+	}
+
+	public void deleteAll() {
+		repository.deleteAllInBatch();
+	}
 	
 }
