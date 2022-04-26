@@ -35,7 +35,7 @@ public class DepartmentServiceTest {
 
     @Test
     public void findById() {
-        Long id = 1L;
+        Long id = 6L;
 
         Department department = departmentService.findById(id);
 

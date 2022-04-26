@@ -26,7 +26,7 @@ public class CourseServiceTests {
 
     @Test
     public void findAllByName() {
-        String name = "course";
+        String name = "Ba";
 
         List<Course> courses = courseService.findAll(name);
 
@@ -57,7 +57,7 @@ public class CourseServiceTests {
     public void update() {
         Course course = new Course();
         course.setId(1L);
-        course.setName("Course 2");
+        course.setName("Banco de dados");
 
         course = courseService.update(course);
 
