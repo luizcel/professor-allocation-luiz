@@ -12,5 +12,4 @@ public interface DepartmentRepository extends JpaRepository<Department, Long> {
 
 	List<Department> findByNameLike(String string);
 
-
 }
