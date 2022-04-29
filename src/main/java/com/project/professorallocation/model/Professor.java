@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "professor")
 public class Professor {
@@ -35,6 +37,7 @@ public class Professor {
 	private Department department;
 
 	@Transient
+	@JsonIgnore
 	private List<Allocation> allocations;
 
 	public Professor() {
