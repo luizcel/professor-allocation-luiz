@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "course")
 public class Course {
@@ -45,7 +47,8 @@ public class Course {
 		return "Course [id=" + id + ", nome=" + name + "]";
 	}
 
-	 public List<Allocation> getAllocations() {
+	@JsonIgnore
+	public List<Allocation> getAllocations() {
 	        return allocations;
 	    }
 
