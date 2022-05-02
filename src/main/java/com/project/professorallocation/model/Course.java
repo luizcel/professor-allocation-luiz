@@ -11,11 +11,14 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "course")
 public class Course {
 	@Id
+	@JsonProperty(access = Access.READ_ONLY)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	

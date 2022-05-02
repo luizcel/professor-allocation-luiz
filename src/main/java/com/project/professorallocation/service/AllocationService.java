@@ -31,7 +31,7 @@ public class AllocationService {
 	}
 	
 	public List<Allocation> findByProfessor(Long id) {
-		return null;
+		return repository.findByProfessorId(id);
 	}
 
 	public void deleteById(Long id) {

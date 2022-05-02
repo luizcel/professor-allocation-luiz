@@ -17,6 +17,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
@@ -27,6 +29,7 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 public class Allocation {
 
 	@Id
+	@JsonProperty(access = Access.READ_ONLY)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -47,10 +50,12 @@ public class Allocation {
 	@Temporal(TemporalType.TIME)
 	@Column(nullable = false, name = "end")
 	private Date endHour;
-
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@Column(name = "professor_id", nullable = false)
 	private Long professorId;
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@Column(name = "course_id", nullable = false)
 	private Long courseId;
 
