@@ -31,7 +31,7 @@ public class ProfessorController {
     
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<Professor>> findALL() {
+    public ResponseEntity<List<Professor>> findAll() {
     	List<Professor> allprofessors = service.findAll(null);
     	return new ResponseEntity<>(allprofessors, HttpStatus.OK);
     }

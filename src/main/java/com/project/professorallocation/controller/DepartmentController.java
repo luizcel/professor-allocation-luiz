@@ -32,7 +32,7 @@ public class DepartmentController {
 	    
 	    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.OK)
-	    public ResponseEntity<List<Department>> findALL() {
+	    public ResponseEntity<List<Department>> findAll() {
 	    	List<Department> allDepartments = service.findAll(null);
 	    	return new ResponseEntity<>(allDepartments, HttpStatus.OK);
 	    }

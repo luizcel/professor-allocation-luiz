@@ -31,7 +31,7 @@ public class CourseController {
 	    
 	    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.OK)
-	    public ResponseEntity<List<Course>> findALL() {
+	    public ResponseEntity<List<Course>> findAll() {
 	    	List<Course> allcourses = service.findAll(null);
 	    	return new ResponseEntity<>(allcourses, HttpStatus.OK);
 	    }
