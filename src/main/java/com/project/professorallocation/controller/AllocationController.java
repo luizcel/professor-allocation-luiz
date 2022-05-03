@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.professorallocation.model.Allocation;
-import com.project.professorallocation.model.Course;
 import com.project.professorallocation.service.AllocationService;
 
 @RestController
