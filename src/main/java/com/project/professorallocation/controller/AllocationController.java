@@ -44,7 +44,7 @@ public class AllocationController {
 		return new ResponseEntity<>(allAllocations, HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Find An Allocation By Id")
+	@ApiOperation(value = "Find an Allocation by Id")
 	@ApiResponses({
 		@ApiResponse(code = 200, message = "OK"),
 		@ApiResponse(code = 400, message = "Allocation not found"),
@@ -61,7 +61,7 @@ public class AllocationController {
 		}
 	}
 	
-	@ApiOperation(value = "Find Professors By Id")
+	@ApiOperation(value = "Find Professors by Id")
 	@GetMapping(path = "/professor/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Allocation>> findByProfessorId(@PathVariable(name = "id") Long id) {

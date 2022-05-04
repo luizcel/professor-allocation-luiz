@@ -44,7 +44,7 @@ public class CourseController {
 	    	return new ResponseEntity<>(allcourses, HttpStatus.OK);
 	    }
 	    
-	    @ApiOperation(value = "Find Course By Id")
+	    @ApiOperation(value = "Find Course by Id")
 	    @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 400, message = "Bad Request"),
@@ -96,7 +96,7 @@ public class CourseController {
 	    	}
 	    //curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Design\"}" "http://localhost:8082/courses/3"
 	    
-	    @ApiOperation(value = "Delete")
+	    @ApiOperation(value = "Delete a Course")
 	    @ApiResponses({
             @ApiResponse(code = 204, message = "No Content")
 	    })

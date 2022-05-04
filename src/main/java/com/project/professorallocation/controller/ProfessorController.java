@@ -44,7 +44,7 @@ public class ProfessorController {
     	return new ResponseEntity<>(allprofessors, HttpStatus.OK);
     }
     
-    @ApiOperation(value = "Find professor By Id")
+    @ApiOperation(value = "Find professor by Id")
     @ApiResponses({
         @ApiResponse(code = 200, message = "OK"),
         @ApiResponse(code = 400, message = "Bad Request"),

@@ -46,7 +46,7 @@ public class DepartmentController {
 	    	return new ResponseEntity<>(allDepartments, HttpStatus.OK);
 	    }
 	    
-	    @ApiOperation(value = "Find Department By Id")
+	    @ApiOperation(value = "Find Department by Id")
 	    @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 400, message = "Bad Request"),
@@ -64,7 +64,7 @@ public class DepartmentController {
 	    }    
 	    }
 	    
-	    @ApiOperation(value = "Create")
+	    @ApiOperation(value = "Create an Department")
 	    @ApiResponses({
             @ApiResponse(code = 201, message = "Created"),
             @ApiResponse(code = 400, message = "Bad Request")
@@ -79,7 +79,7 @@ public class DepartmentController {
 	    
 	    //curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Departamento de Design\"}" "http://localhost:8082/departments"
 	    
-	    @ApiOperation(value = "Update")
+	    @ApiOperation(value = "Update an Department")
 	    @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 400, message = "Bad Request"),
@@ -98,7 +98,7 @@ public class DepartmentController {
 	    	}
 	    //curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"department 2\"}" "http://localhost:8082/departments/6"
 	    
-	    @ApiOperation(value = "Delete")
+	    @ApiOperation(value = "Delete an Department")
 	    @ApiResponses({
             @ApiResponse(code = 204, message = "No Content")
 	    })
