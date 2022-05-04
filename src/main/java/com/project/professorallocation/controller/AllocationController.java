@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.professorallocation.model.Allocation;
 import com.project.professorallocation.service.AllocationService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 @RestController
 @RequestMapping(path = "/allocations")
 public class AllocationController {
@@ -29,6 +33,7 @@ public class AllocationController {
 		this.service = service;
 	}
 
+	@ApiOperation(value = "Find All Allocations")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Allocation>> findAll() {
@@ -36,6 +41,11 @@ public class AllocationController {
 		return new ResponseEntity<>(allAllocations, HttpStatus.OK);
 	}
 
+	@ApiOperation(value = "Find An Allocation By Id")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "OK"),
+		@ApiResponse(code = 400, message = "Allocation not found")
+	})
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Allocation> findById(@PathVariable(name = "id") Long id) {
@@ -46,7 +56,8 @@ public class AllocationController {
 			return new ResponseEntity<>(allocation, HttpStatus.OK);
 		}
 	}
-
+	
+	@ApiOperation(value = "Find Professors By Id")
 	@GetMapping(path = "/professor/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Allocation>> findByProfessorId(@PathVariable(name = "id") Long id) {
@@ -54,6 +65,7 @@ public class AllocationController {
 		return new ResponseEntity<>(allAllocations, HttpStatus.OK);
 	}
 
+	@ApiOperation(value = "Create")
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Allocation> create(@RequestBody Allocation allocation) {
@@ -66,6 +78,7 @@ public class AllocationController {
 	}
 	//curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"dayOfWeek\": \"MONDAY\", \"startHour\":\"19:00-0300\", \"endHour\": \"21:00-0300\", \"professorId\":\"1\", \"courseId\":\"2\"}" "http://localhost:8082/allocations"
 
+	@ApiOperation(value = "Update")
 	@PutMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Allocation> update(@PathVariable(name = "id") Long id, @RequestBody Allocation allocation){
@@ -79,7 +92,8 @@ public class AllocationController {
     	}
     //curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"dayOfWeek\": \"MONDAY\", \"startHour\":\"19:00-0300\", \"endHour\": \"21:00-0300\", \"professorId\":\"1\", \"courseId\":\"2\"}" "http://localhost:8082/allocations/30"
     
-    @DeleteMapping(path = "/{id}")
+	@ApiOperation(value = "Delete")
+	@DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> delete(@PathVariable(name = "id") Long id){
     	

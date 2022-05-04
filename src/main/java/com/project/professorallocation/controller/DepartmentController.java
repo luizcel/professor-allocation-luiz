@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.professorallocation.model.Department;
 import com.project.professorallocation.service.DepartmentService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(path = "/departments")
 
@@ -30,6 +32,7 @@ public class DepartmentController {
 	        this.service = departmentService;
 	    }
 	    
+	    @ApiOperation(value = "Find All Departments")
 	    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.OK)
 	    public ResponseEntity<List<Department>> findAll() {
@@ -37,6 +40,7 @@ public class DepartmentController {
 	    	return new ResponseEntity<>(allDepartments, HttpStatus.OK);
 	    }
 	    
+	    @ApiOperation(value = "Find Department By Id")
 	    @GetMapping(path = "/{dept_id}",produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.OK)
 	    public ResponseEntity<Department> findById(@PathVariable(name = "dept_id") Long id) {
@@ -46,9 +50,10 @@ public class DepartmentController {
 	    		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	    	}else {
 	    	return new ResponseEntity<>(item, HttpStatus.OK);
+	    }    
 	    }
 	    
-	}
+	    @ApiOperation(value = "Create")
 	    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.CREATED)
 	    public ResponseEntity<Department> create(@RequestBody Department dept){
@@ -59,6 +64,7 @@ public class DepartmentController {
 	    
 	    //curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Departamento de Design\"}" "http://localhost:8082/departments"
 	    
+	    @ApiOperation(value = "Update")
 	    @PutMapping(path = "/{dept_id}",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.CREATED)
 	    public ResponseEntity<Department> update(@PathVariable(name = "dept_id") Long id, @RequestBody Department dept){
@@ -72,6 +78,7 @@ public class DepartmentController {
 	    	}
 	    //curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"department 2\"}" "http://localhost:8082/departments/6"
 	    
+	    @ApiOperation(value = "Delte")
 	    @DeleteMapping(path = "/{dept_id}")
 	    @ResponseStatus(HttpStatus.NO_CONTENT)
 	    public ResponseEntity<Void> delete(@PathVariable(name = "dept_id") Long id){

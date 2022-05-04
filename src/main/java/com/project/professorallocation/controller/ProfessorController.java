@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.professorallocation.model.Professor;
 import com.project.professorallocation.service.ProfessorService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(path = "/professors")
 public class ProfessorController {
@@ -29,6 +31,7 @@ public class ProfessorController {
         this.service = professorService;
     }
     
+    @ApiOperation(value = "Find All Professors")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<Professor>> findAll() {
@@ -36,6 +39,7 @@ public class ProfessorController {
     	return new ResponseEntity<>(allprofessors, HttpStatus.OK);
     }
     
+    @ApiOperation(value = "Find professor By Id")
     @GetMapping(path = "/{prof_id}",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Professor> findById(@PathVariable(name = "prof_id") Long id) {
@@ -46,8 +50,9 @@ public class ProfessorController {
     	}else {
     	return new ResponseEntity<>(item, HttpStatus.OK);
     }
-    
     }
+    
+    @ApiOperation(value = "Create")
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Professor> create(@RequestBody Professor professor){
@@ -58,6 +63,7 @@ public class ProfessorController {
     
     //curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Amirton\", \"cpf\": \"12345678911\", \"departmentId\": \"6\"}" "http://localhost:8082/professors"
     
+    @ApiOperation(value = "Update")
     @PutMapping(path = "/{prof_id}",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Professor> update(@PathVariable(name = "prof_id") Long id, @RequestBody Professor professor){
@@ -71,6 +77,7 @@ public class ProfessorController {
     	}
     //curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Luiz\", \"cpf\": \"00818990327\", \"departmentId\": \"6\"}" "http://localhost:8082/professors/4"
     
+    @ApiOperation(value = "Delete")
     @DeleteMapping(path = "/{prof_id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> delete(@PathVariable(name = "prof_id") Long id){

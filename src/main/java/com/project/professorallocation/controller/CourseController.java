@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.project.professorallocation.model.Course;
 import com.project.professorallocation.service.CourseService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(path = "/courses")
 public class CourseController {
@@ -29,6 +31,7 @@ public class CourseController {
 	        this.service = courseService;
 	    }
 	    
+	    @ApiOperation(value = "Find All Courses")
 	    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.OK)
 	    public ResponseEntity<List<Course>> findAll() {
@@ -36,6 +39,7 @@ public class CourseController {
 	    	return new ResponseEntity<>(allcourses, HttpStatus.OK);
 	    }
 	    
+	    @ApiOperation(value = "Find Course By Id")
 	    @GetMapping(path = "/{course_id}",produces = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.OK)
 	    public ResponseEntity<Course> findById(@PathVariable(name = "course_id") Long id) {
@@ -46,8 +50,9 @@ public class CourseController {
 	    	}else {
 	    	return new ResponseEntity<>(item, HttpStatus.OK);
 	    }
-	    
-	}
+	    }
+	   
+	    @ApiOperation(value = "Create")
 	    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.CREATED)
 	    public ResponseEntity<Course> create(@RequestBody Course course){
@@ -58,6 +63,7 @@ public class CourseController {
 	    
 	    //curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"BackEnd\"}" "http://localhost:8082/courses"
 	    
+	    @ApiOperation(value = "Update")
 	    @PutMapping(path = "/{course_id}",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	    @ResponseStatus(HttpStatus.CREATED)
 	    public ResponseEntity<Course> update(@PathVariable(name = "course_id") Long id, @RequestBody Course course){
@@ -71,6 +77,7 @@ public class CourseController {
 	    	}
 	    //curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Design\"}" "http://localhost:8082/courses/3"
 	    
+	    @ApiOperation(value = "Delete")
 	    @DeleteMapping(path = "/{course_id}")
 	    @ResponseStatus(HttpStatus.NO_CONTENT)
 	    public ResponseEntity<Void> delete(@PathVariable(name = "course_id") Long id){
