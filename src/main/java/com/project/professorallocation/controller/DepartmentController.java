@@ -78,7 +78,7 @@ public class DepartmentController {
 	    	}
 	    //curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"department 2\"}" "http://localhost:8082/departments/6"
 	    
-	    @ApiOperation(value = "Delte")
+	    @ApiOperation(value = "Delete")
 	    @DeleteMapping(path = "/{dept_id}")
 	    @ResponseStatus(HttpStatus.NO_CONTENT)
 	    public ResponseEntity<Void> delete(@PathVariable(name = "dept_id") Long id){
