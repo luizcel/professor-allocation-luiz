@@ -2,6 +2,7 @@ package com.project.professorallocation.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,13 +26,9 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping(path = "/allocations")
 public class AllocationController {
-
-	private final AllocationService service;
-
-	public AllocationController(AllocationService service) {
-		super();
-		this.service = service;
-	}
+	
+	@Autowired
+	private AllocationService service;
 
 	@ApiOperation(value = "Find All Allocations")
 	@ApiResponses({
