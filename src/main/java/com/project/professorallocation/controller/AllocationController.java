@@ -34,6 +34,9 @@ public class AllocationController {
 	}
 
 	@ApiOperation(value = "Find All Allocations")
+	@ApiResponses({
+        @ApiResponse(code = 200, message = "OK")
+	})
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<Allocation>> findAll() {
@@ -44,7 +47,8 @@ public class AllocationController {
 	@ApiOperation(value = "Find An Allocation By Id")
 	@ApiResponses({
 		@ApiResponse(code = 200, message = "OK"),
-		@ApiResponse(code = 400, message = "Allocation not found")
+		@ApiResponse(code = 400, message = "Allocation not found"),
+		@ApiResponse(code = 404, message = "Not Found")
 	})
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
@@ -65,7 +69,11 @@ public class AllocationController {
 		return new ResponseEntity<>(allAllocations, HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Create")
+	@ApiOperation(value = "Create an Allocation")
+	@ApiResponses({
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 400, message = "Bad Request")
+	})
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Allocation> create(@RequestBody Allocation allocation) {
@@ -78,7 +86,12 @@ public class AllocationController {
 	}
 	//curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"dayOfWeek\": \"MONDAY\", \"startHour\":\"19:00-0300\", \"endHour\": \"21:00-0300\", \"professorId\":\"1\", \"courseId\":\"2\"}" "http://localhost:8082/allocations"
 
-	@ApiOperation(value = "Update")
+	@ApiOperation(value = "Update an Allocation")
+	@ApiResponses({
+         @ApiResponse(code = 200, message = "OK"),
+         @ApiResponse(code = 400, message = "Bad Request"),
+         @ApiResponse(code = 404, message = "Not Found")
+	})
 	@PutMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Allocation> update(@PathVariable(name = "id") Long id, @RequestBody Allocation allocation){
@@ -92,7 +105,10 @@ public class AllocationController {
     	}
     //curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"dayOfWeek\": \"MONDAY\", \"startHour\":\"19:00-0300\", \"endHour\": \"21:00-0300\", \"professorId\":\"1\", \"courseId\":\"2\"}" "http://localhost:8082/allocations/30"
     
-	@ApiOperation(value = "Delete")
+	@ApiOperation(value = "Delete an Allocation")
+	@ApiResponses({
+        @ApiResponse(code = 204, message = "No Content")
+	})
 	@DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> delete(@PathVariable(name = "id") Long id){

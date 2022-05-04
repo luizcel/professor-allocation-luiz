@@ -19,6 +19,8 @@ import com.project.professorallocation.model.Professor;
 import com.project.professorallocation.service.ProfessorService;
 
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping(path = "/professors")
@@ -32,6 +34,9 @@ public class ProfessorController {
     }
     
     @ApiOperation(value = "Find All Professors")
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "OK")
+    })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<Professor>> findAll() {
@@ -40,6 +45,11 @@ public class ProfessorController {
     }
     
     @ApiOperation(value = "Find professor By Id")
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "OK"),
+        @ApiResponse(code = 400, message = "Bad Request"),
+        @ApiResponse(code = 404, message = "Not Found")
+    })
     @GetMapping(path = "/{prof_id}",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Professor> findById(@PathVariable(name = "prof_id") Long id) {
@@ -52,7 +62,11 @@ public class ProfessorController {
     }
     }
     
-    @ApiOperation(value = "Create")
+    @ApiOperation(value = "Create a Professor")
+    @ApiResponses({
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 400, message = "Bad Request")
+    })
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Professor> create(@RequestBody Professor professor){
@@ -63,7 +77,12 @@ public class ProfessorController {
     
     //curl -v --request POST --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Amirton\", \"cpf\": \"12345678911\", \"departmentId\": \"6\"}" "http://localhost:8082/professors"
     
-    @ApiOperation(value = "Update")
+    @ApiOperation(value = "Update a Professor")
+    @ApiResponses({
+        @ApiResponse(code = 200, message = "OK"),
+        @ApiResponse(code = 400, message = "Bad Request"),
+        @ApiResponse(code = 404, message = "Not Found")
+    })
     @PutMapping(path = "/{prof_id}",produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Professor> update(@PathVariable(name = "prof_id") Long id, @RequestBody Professor professor){
@@ -77,7 +96,10 @@ public class ProfessorController {
     	}
     //curl -v --request PUT --header "Content-Type: application/json" --header "Accept: application/json" --data-raw "{\"name\": \"Luiz\", \"cpf\": \"00818990327\", \"departmentId\": \"6\"}" "http://localhost:8082/professors/4"
     
-    @ApiOperation(value = "Delete")
+    @ApiOperation(value = "Delete a Professor")
+    @ApiResponses({
+        @ApiResponse(code = 204, message = "No Content")
+    })
     @DeleteMapping(path = "/{prof_id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> delete(@PathVariable(name = "prof_id") Long id){
